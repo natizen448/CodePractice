@@ -26,15 +26,15 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            this.transform.position += new Vector3(-moveSpeed,0,0) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            this.transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.Space) && !IsJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            this.transform.position += new Vector3(0, jumpSpeed, 0) * Time.deltaTime;
             IsJump = true;
         }
     }
