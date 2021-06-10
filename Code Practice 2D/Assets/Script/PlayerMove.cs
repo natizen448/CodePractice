@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = 3f;
-    [SerializeField]
-    private float jumpSpeed = 5f;
-
+    [SerializeField]private float moveSpeed = 3f;
+    [SerializeField]private float jumpSpeed = 5f;
     private bool IsJump = false;
     private Rigidbody2D rb;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-
     void Update()
     {
         MovePlayer();
-        isFloor();
+        jump();
     }
     void MovePlayer()
     {
@@ -34,17 +30,12 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && !IsJump)
         {
-            this.transform.position += new Vector3(0, jumpSpeed, 0) * Time.deltaTime;
+            
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
             IsJump = true;
         }
+      
+        
     }
-    void isFloor()
-    {
-        if (rb.velocity.y == 0)
-        {
-            IsJump = false;
-        }
-    }
-
 
 }

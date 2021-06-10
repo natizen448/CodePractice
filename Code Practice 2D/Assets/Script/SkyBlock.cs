@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class SkyBlock : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    
+    private bool isSkyblock = false;
+    private Collider2D col;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if(rb.velocity.y == 0)
-        {
-          
-        }
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        this.transform.position += new Vector3(0, 0.1f, 0);
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("SkyBlock"))
+        if(collision.CompareTag("Player"))
         {
-            collision.isTrigger = false;
+            if(!isSkyblock)
+            {
+                collision.transform.position += new Vector3(0, 1.3f, 0);
+                isSkyblock = true;
+            }
+            if(isSkyblock)
+            {
+                col.isTrigger = false;
+            }
+           
         }
     }
 }
