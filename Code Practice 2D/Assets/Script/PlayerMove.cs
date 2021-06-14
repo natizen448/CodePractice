@@ -6,7 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]private float moveSpeed = 3f;
     [SerializeField]private float jumpSpeed = 5f;
-    private bool IsJump = false;
+    public bool isJump = false;
+    private int Jumpcount = 1;
     private Rigidbody2D rb;
 
     void Start()
@@ -16,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        jump();
+        
     }
     void MovePlayer()
     {
@@ -28,14 +29,32 @@ public class PlayerMove : MonoBehaviour
         {
             this.transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.Space) && !IsJump)
+        if (Input.GetKey(KeyCode.Space) && Jumpcount == 1)
         {
-            
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-            IsJump = true;
+            rb.velocity += new Vector2(0, jumpSpeed);
+            if (rb.velocity.y > 0)
+            {
+                Jumpcount--;
+                isJump = true;
+            }
         }
       
         
     }
+  
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Floor")
+        {
+            Jumpcount = 1;
+            isJump = false;
+        }
 
+        if(collision.gameObject.tag == "SkyBlock")
+        {
+            Jumpcount = 1;
+            
+        }
+    }
 }
+

@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class SkyBlock : MonoBehaviour
 {
-    private bool isSkyblock = false;
-    private Collider2D col;
-
+    [SerializeField] private float Jumpspeed;
+    private int flashcount = 1;
+    Rigidbody2D rb;
     void Start()
     {
-        col = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
        
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+ 
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if(collision.CompareTag("Player"))
+        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+
+
+        if(collision.gameObject.tag == "SkyBlock")
         {
-            if(!isSkyblock)
-            {
-                collision.transform.position += new Vector3(0, 1.3f, 0);
-                isSkyblock = true;
+            if (pm.isJump && flashcount == 1)
+            {   
+                pm.isJump = false;  
+                Debug.Log("´ê¾ÒÀ½");   
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + Jumpspeed, this.transform.position.z);
+                flashcount--;
+                
             }
-            if(isSkyblock)
+            
+        }
+
+        if(collision.gameObject.tag == "SkyBlock")
+        {
+            if(rb.velocity.y == 0)
             {
-                col.isTrigger = false;
+                flashcount = 1;
             }
-           
         }
     }
 }
