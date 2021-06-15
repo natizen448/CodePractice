@@ -48,13 +48,7 @@ public class PlayerMove : MonoBehaviour
         {
             Jumpcount = 1;
             isJump = false;
-        }
-
-        if(collision.gameObject.tag == "SkyBlock")
-        {
-            Jumpcount = 1;
-            
-        }
+        }   
     }
 }
 

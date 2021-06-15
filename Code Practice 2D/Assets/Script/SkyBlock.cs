@@ -5,7 +5,6 @@ using UnityEngine;
 public class SkyBlock : MonoBehaviour
 {
     [SerializeField] private float Jumpspeed;
-    private int flashcount = 1;
     Rigidbody2D rb;
     void Start()
     {
@@ -15,32 +14,21 @@ public class SkyBlock : MonoBehaviour
     {
        
     }
- 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
-
-
-        if(collision.gameObject.tag == "SkyBlock")
+        if (collision.CompareTag("SkyBlock"))
         {
-            if (pm.isJump && flashcount == 1)
-            {   
-                pm.isJump = false;  
-                Debug.Log("´ê¾ÒÀ½");   
-                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + Jumpspeed, this.transform.position.z);
-                flashcount--;
-                
-            }
-            
+            rb.velocity += new Vector2(0, Jumpspeed) * Time.deltaTime * 3;
         }
-
-        if(collision.gameObject.tag == "SkyBlock")
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("SkyBlock"))
         {
-            if(rb.velocity.y == 0)
-            {
-                flashcount = 1;
-            }
+            collision.isTrigger = false;
         }
     }
 }
+

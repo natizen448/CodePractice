@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SkyBlock
   - floor
+  - Floor
   layers:
   - Default
   - TransparentFX
