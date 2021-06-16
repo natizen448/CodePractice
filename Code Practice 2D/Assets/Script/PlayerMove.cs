@@ -6,10 +6,10 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]private float moveSpeed = 3f;
     [SerializeField]private float jumpSpeed = 5f;
-   
+    [SerializeField] private Animator anim;
     public int Jumpcount = 1;
     private Rigidbody2D rb;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,10 +24,22 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             this.transform.position += new Vector3(-moveSpeed,0,0) * Time.deltaTime;
+            this.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+      
         if (Input.GetKey(KeyCode.D))
         {
             this.transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
+            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            
+        }
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        {
+            anim.SetBool("iswalk", true);
+        }
+        else
+        {
+            anim.SetBool("iswalk", false);
         }
         if (Input.GetKey(KeyCode.Space) && Jumpcount == 1)
         {
