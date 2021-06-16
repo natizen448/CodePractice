@@ -10,24 +10,27 @@ public class SkyBlock : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void Update()
-    {
-       
-    }
-
 
     private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("SkyBlock"))
+    {   
+        if (collision.CompareTag("SkyBlock") && rb.velocity.y > 0)
         {
-            rb.velocity += new Vector2(0, Jumpspeed) * Time.deltaTime * 3;
+            transform.position += new Vector3(0, Jumpspeed,0) * Time.deltaTime;
         }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("SkyBlock"))
+        if(collision.CompareTag("SkyBlock") && rb.velocity.y > 0)
         {
             collision.isTrigger = false;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("SkyBlock") && rb.velocity.y > 0)
+        {
+            collision.collider.isTrigger = true;
         }
     }
 }

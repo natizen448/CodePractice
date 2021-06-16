@@ -6,8 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField]private float moveSpeed = 3f;
     [SerializeField]private float jumpSpeed = 5f;
-    public bool isJump = false;
-    private int Jumpcount = 1;
+   
+    public int Jumpcount = 1;
     private Rigidbody2D rb;
 
     void Start()
@@ -35,11 +35,9 @@ public class PlayerMove : MonoBehaviour
             if (rb.velocity.y > 0)
             {
                 Jumpcount--;
-                isJump = true;
+                
             }
         }
-      
-        
     }
   
     private void OnCollisionEnter2D(Collision2D collision)
@@ -47,8 +45,9 @@ public class PlayerMove : MonoBehaviour
         if(collision.gameObject.tag == "Floor")
         {
             Jumpcount = 1;
-            isJump = false;
         }   
     }
+
+   
 }
 
