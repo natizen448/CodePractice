@@ -8,7 +8,7 @@ public class CameraMove : MonoBehaviour
     [SerializeField]float timeOfset;
     [SerializeField]Vector2 posOffset;
    
-    void Update()
+    void FixedUpdate()
     {
         //카메라 current 지점
         Vector3 startPos = transform.position;
