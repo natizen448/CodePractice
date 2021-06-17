@@ -7,12 +7,7 @@ public class CameraMove : MonoBehaviour
     [SerializeField]GameObject player;
     [SerializeField]float timeOfset;
     [SerializeField]Vector2 posOffset;
-    void Start()
-    {
-
-    }
-
-
+   
     void Update()
     {
         //카메라 current 지점
