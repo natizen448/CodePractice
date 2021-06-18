@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         MovePlayer();
-        Dash();
+        Slid();
         if (Input.GetMouseButton(1))
         {
             moveSpeed = 1f;
@@ -78,14 +78,14 @@ public class PlayerMove : MonoBehaviour
         }
     }
     
-    void Dash()
+    void Slid()
     {
-        if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftControl))
         {
             rb.AddForce(new Vector2(-7f, 0));
            
         }
-        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftControl))
         {
             rb.AddForce(new Vector2(7f, 0));
            
@@ -93,11 +93,11 @@ public class PlayerMove : MonoBehaviour
 
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
-            if(Input.GetKeyDown(KeyCode.LeftShift) && dashcount == 1)
+            if(Input.GetKeyDown(KeyCode.LeftControl) && dashcount == 1)
             {
                 anim.SetBool("isdash", true); 
             }
-            if(Input.GetKeyUp(KeyCode.LeftShift))
+            if(Input.GetKeyUp(KeyCode.LeftControl))
             {
                 anim.SetBool("isdash", false);
             }
@@ -110,12 +110,6 @@ public class PlayerMove : MonoBehaviour
         {
             Jumpcount = 1;
         }   
-    }
-
-    IEnumerator Dashcool()
-    {
-        yield return new WaitForSeconds(1f);
-        dashcount = 1;
     }
 }
 
