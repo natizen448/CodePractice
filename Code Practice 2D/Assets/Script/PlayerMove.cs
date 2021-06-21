@@ -6,8 +6,8 @@ public class PlayerMove : MonoBehaviour
 {   
     [SerializeField] private Animator anim;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpSpeed;
     [SerializeField] private float dashSpeed;
+    [SerializeField] private float jumpSpeed;
     public int Jumpcount = 1;
     public bool isDash = false;
     private bool isDashCoolDown = true;
@@ -22,14 +22,8 @@ public class PlayerMove : MonoBehaviour
     {
         MovePlayer();
         dash();
-        if (Input.GetMouseButton(1))
-        {
-            moveSpeed = 1f;
-        }
-        else
-        {
-            moveSpeed = 3f;
-        }
+        Sliding();
+        DefenseSpeed();
     }
 
     void MovePlayer()
@@ -53,17 +47,6 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        {
-            anim.SetBool("iswalk", true);
-        }
-        else
-        {
-            anim.SetBool("iswalk", false);
-        }
-
-
         if (Input.GetKey(KeyCode.Space) && Jumpcount == 1)
         {
             rb.velocity += new Vector2(0, jumpSpeed);
@@ -71,15 +54,23 @@ public class PlayerMove : MonoBehaviour
             if (rb.velocity.y > 0)
             {
                 Jumpcount--;
-                
+
             }
         }
 
-
-        if(rb.velocity.y < 0)
+        if (rb.velocity.y < 0)
         {
-           anim.SetBool("isjump", false);
+            anim.SetBool("isjump", false);
         }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        {
+            anim.SetBool("iswalk", true);
+        }
+        else
+        {
+            anim.SetBool("iswalk", false);
+        }
+      
     }
 
     void dash()
@@ -100,6 +91,30 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    void Sliding()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            anim.SetBool("isslid", true);
+        }
+        else
+        {
+            anim.SetBool("isslid", false);
+        }
+    }
+
+    void DefenseSpeed()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            moveSpeed = 1f;
+        }
+        else
+        {
+            moveSpeed = 3f;
+        }
+    }
+
     IEnumerator Dash(int direction)
     {
         rb.velocity += new Vector2(dashSpeed * direction, 0);
@@ -115,13 +130,7 @@ public class PlayerMove : MonoBehaviour
         isDashCoolDown = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Floor")
-        {
-            Jumpcount = 1;
-        }   
-    }
+    
 
 }
 
