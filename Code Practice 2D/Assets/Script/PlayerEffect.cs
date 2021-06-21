@@ -5,14 +5,12 @@ using UnityEngine;
 public class PlayerEffect : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    void Start()
-    {
-        
-    }
+    private bool Dash;
 
-    // Update is called once per frame
     void Update()
-    {
-        
+    {   
+        PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
+        Dash = pm.isDash;
+        anim.SetBool("isdash", Dash);
     }
 }

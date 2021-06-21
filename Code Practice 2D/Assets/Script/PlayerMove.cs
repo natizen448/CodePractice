@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float dashSpeed;
     public int Jumpcount = 1;
+    public bool isDash = false;
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     
@@ -84,24 +85,28 @@ public class PlayerMove : MonoBehaviour
     void dash()
     {
         if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
-        {
-            StartCoroutine("Slid", -1);
+        {   
+            isDash = true;
+            StartCoroutine("Dash", -1);
             isDashCoolDown = false;
             StartCoroutine(DashCool());
         }
         if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
-        {
-            StartCoroutine("Slid", 1);
+        {   
+            isDash = true;
+            StartCoroutine("Dash", 1);
             isDashCoolDown = false;
             StartCoroutine(DashCool());
         }
     }
 
-    IEnumerator Slid(int direction)
+    IEnumerator Dash(int direction)
     {
         rb.velocity += new Vector2(dashSpeed * direction, 0);
-        yield return new WaitForSeconds(1f);
-        
+        rb.drag = 2f;
+        yield return new WaitForSeconds(0.7f);
+        isDash = false;
+        rb.drag = 1f;
     }
 
     IEnumerator DashCool()
