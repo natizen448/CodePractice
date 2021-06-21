@@ -5,20 +5,22 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {   
     [SerializeField] private Animator anim;
-    private float moveSpeed = 3f;
-    private float jumpSpeed = 5f;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpSpeed;
+    [SerializeField] private float dashSpeed;
     public int Jumpcount = 1;
-    private int dashcount = 1;
+    private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     void Update()
     {
         MovePlayer();
-        Slid();
+        dash();
         if (Input.GetMouseButton(1))
         {
             moveSpeed = 1f;
@@ -28,6 +30,7 @@ public class PlayerMove : MonoBehaviour
             moveSpeed = 3f;
         }
     }
+
     void MovePlayer()
     {
         if (Input.GetKey(KeyCode.A))
@@ -77,33 +80,36 @@ public class PlayerMove : MonoBehaviour
            anim.SetBool("isjump", false);
         }
     }
-    
-    void Slid()
-    {
-        if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            rb.AddForce(new Vector2(-7f, 0));
-           
-        }
-        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            rb.AddForce(new Vector2(7f, 0));
-           
-        }
 
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+    void dash()
+    {
+        if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
         {
-            if(Input.GetKeyDown(KeyCode.LeftControl) && dashcount == 1)
-            {
-                anim.SetBool("isdash", true); 
-            }
-            if(Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                anim.SetBool("isdash", false);
-            }
+            StartCoroutine("Slid", -1);
+            isDashCoolDown = false;
+            StartCoroutine(DashCool());
         }
-            
+        if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
+        {
+            StartCoroutine("Slid", 1);
+            isDashCoolDown = false;
+            StartCoroutine(DashCool());
+        }
     }
+
+    IEnumerator Slid(int direction)
+    {
+        rb.velocity += new Vector2(dashSpeed * direction, 0);
+        yield return new WaitForSeconds(1f);
+        
+    }
+
+    IEnumerator DashCool()
+    {   
+        yield return new WaitForSeconds(3f);
+        isDashCoolDown = true;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Floor")
@@ -111,5 +117,6 @@ public class PlayerMove : MonoBehaviour
             Jumpcount = 1;
         }   
     }
+
 }
 
