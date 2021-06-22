@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public int Jumpcount = 1;
     public bool isDash = false;
     private bool isDashCoolDown = true;
+    public bool isSlid = false;
     private Rigidbody2D rb;
     
     void Start()
@@ -96,10 +97,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             anim.SetBool("isslid", true);
+            isSlid = true;
         }
         else
         {
             anim.SetBool("isslid", false);
+            isSlid = false;
         }
     }
 
