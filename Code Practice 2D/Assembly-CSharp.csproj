@@ -58,13 +58,15 @@
   <ItemGroup>
     <Compile Include="Assets\Script\SkyBlock.cs" />
     <Compile Include="Assets\ZSmartTile\Components\ZST_SmartTile.cs" />
+    <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
-    <Compile Include="Assets\Script\PlayerEffect.cs" />
+    <Compile Include="Assets\Script\Player\PlayerEffect.cs" />
     <Compile Include="Assets\ZSmartTile\Components\ZST_SnapToGrid.cs" />
-    <Compile Include="Assets\Script\PlayerAtt.cs" />
-    <Compile Include="Assets\Script\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAtt.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Player\PlayerScaffolding.cs" />
     <Compile Include="Assets\ZSmartTile\Classes\ZST_MapManager.cs" />
-    <Compile Include="Assets\Script\PlayerScaffolding.cs" />
+    <Compile Include="Assets\Script\Player\PlayerDef.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />
