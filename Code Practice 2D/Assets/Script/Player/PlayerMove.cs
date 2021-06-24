@@ -13,13 +13,14 @@ public class PlayerMove : MonoBehaviour
     public bool isSlid = false;
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
-    
+    private CapsuleCollider2D cc2;
     
 
     void Start()
     {   
         
         rb = GetComponent<Rigidbody2D>();
+        cc2 = GetComponent<CapsuleCollider2D>();
         
     }
 
@@ -105,11 +106,17 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             anim.SetBool("isslid", true);
+            cc2.size = new Vector2(1.625701f, 1.056339f);
+            cc2.direction = CapsuleDirection2D.Horizontal;
+            cc2.offset = new Vector2(0.01975906f, -0.62f);
             isSlid = true;
         }
         else
         {
             anim.SetBool("isslid", false);
+            cc2.size = new Vector2(1.056339f, 1.625701f);
+            cc2.direction = CapsuleDirection2D.Vertical;
+            cc2.offset = new Vector2(0.01975906f, -0.435951f);
             isSlid = false;
         }
     }
