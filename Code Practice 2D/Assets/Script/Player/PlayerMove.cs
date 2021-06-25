@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
-    
+    [SerializeField] GameObject Scaffolding;
 
     void Start()
     {   
@@ -61,6 +61,7 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity += new Vector2(0, jumpSpeed);
             anim.SetBool("isjump", true);
+            Scaffolding.SetActive(false);
             if (rb.velocity.y > 0)
             {
                 Jumpcount--;
@@ -71,6 +72,7 @@ public class PlayerMove : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             anim.SetBool("isjump", false);
+            Scaffolding.SetActive(true);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
@@ -106,18 +108,25 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             anim.SetBool("isslid", true);
-            cc2.size = new Vector2(1.625701f, 1.056339f);
-            cc2.direction = CapsuleDirection2D.Horizontal;
-            cc2.offset = new Vector2(0.01975906f, -0.62f);
             isSlid = true;
         }
         else
         {
             anim.SetBool("isslid", false);
+            isSlid = false;
+        }
+
+        if(anim.GetBool("isslid"))
+        {
+            cc2.size = new Vector2(1.625701f, 1.056339f);
+            cc2.direction = CapsuleDirection2D.Horizontal;
+            cc2.offset = new Vector2(0.01975906f, -0.62f);
+        }
+        else
+        {
             cc2.size = new Vector2(1.056339f, 1.625701f);
             cc2.direction = CapsuleDirection2D.Vertical;
             cc2.offset = new Vector2(0.01975906f, -0.435951f);
-            isSlid = false;
         }
     }
 
