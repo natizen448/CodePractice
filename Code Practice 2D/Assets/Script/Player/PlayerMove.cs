@@ -11,11 +11,12 @@ public class PlayerMove : MonoBehaviour
     public int Jumpcount = 1;
     public bool isDash = false;
     public bool isSlid = false;
+    public bool isSkyBlock = false;
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
     [SerializeField] GameObject Scaffolding;
-
+    [SerializeField] GameObject PlayerHeadBoundary;
     void Start()
     {   
         
@@ -34,6 +35,9 @@ public class PlayerMove : MonoBehaviour
         MovePlayer();
         dash();
         Sliding();
+        if (isSkyBlock)
+            StartCoroutine(SkyBlock());
+            
     }
 
     void MovePlayer()
@@ -62,6 +66,7 @@ public class PlayerMove : MonoBehaviour
             rb.velocity += new Vector2(0, jumpSpeed);
             anim.SetBool("isjump", true);
             Scaffolding.SetActive(false);
+            PlayerHeadBoundary.SetActive(true);
             if (rb.velocity.y > 0)
             {
                 Jumpcount--;
@@ -73,6 +78,7 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetBool("isjump", false);
             Scaffolding.SetActive(true);
+            PlayerHeadBoundary.SetActive(false);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
@@ -124,7 +130,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            cc2.size = new Vector2(1.056339f, 1.625701f);
+            cc2.size = new Vector2(0.81f, 1.24f);
             cc2.direction = CapsuleDirection2D.Vertical;
             cc2.offset = new Vector2(0.01975906f, -0.435951f);
         }
@@ -145,7 +151,12 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(3f);
         isDashCoolDown = true;
     }
-
+    IEnumerator SkyBlock()
+    {   
+        yield return null;
+        transform.position += new Vector3(0, 1.2f, 0);
+        isSkyBlock = false; 
+    }
     
 
 }

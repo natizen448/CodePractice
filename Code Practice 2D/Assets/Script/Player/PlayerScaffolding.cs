@@ -14,10 +14,13 @@ public class PlayerScaffolding : MonoBehaviour
         {
             pm.Jumpcount = 1;
         }
-
-        if(collision.gameObject.tag == "SkyBlock")
+        if (collision.gameObject.tag == "SkyBlock" && !pm.isSlid)
         {
-
+            pm.Jumpcount = 1;
         }
+     
     }
+
+
+  
 }
