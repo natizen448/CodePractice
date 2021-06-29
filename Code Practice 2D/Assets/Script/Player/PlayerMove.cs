@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public bool isDash = false;
     public bool isSlid = false;
     public bool isSkyBlock = false;
+    private int jump = 0;
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
@@ -35,6 +36,7 @@ public class PlayerMove : MonoBehaviour
         MovePlayer();
         dash();
         Sliding();
+        DoubleJump();
         if (isSkyBlock)
             StartCoroutine(SkyBlock());
             
@@ -61,6 +63,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+
         if (Input.GetKey(KeyCode.Space) && Jumpcount == 1)
         {
             rb.velocity += new Vector2(0, jumpSpeed);
@@ -70,7 +73,6 @@ public class PlayerMove : MonoBehaviour
             if (rb.velocity.y > 0)
             {
                 Jumpcount--;
-
             }
         }
 
@@ -96,14 +98,14 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
         {   
             isDash = true;
-            StartCoroutine("Dash", -1);
+            StartCoroutine(Dash(-1));
             isDashCoolDown = false;
             StartCoroutine(DashCool());
         }
         if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
         {   
             isDash = true;
-            StartCoroutine("Dash", 1);
+            StartCoroutine(Dash(1));
             isDashCoolDown = false;
             StartCoroutine(DashCool());
         }
@@ -136,6 +138,19 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    void DoubleJump()
+    {   
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            jump += 1;
+            StartCoroutine(jumpcool());
+        }
+        if(jump > 1)
+        {
+            StartCoroutine(DoubleJumpcor());
+        }
+    }
 
     IEnumerator Dash(int direction)
     {
@@ -157,7 +172,16 @@ public class PlayerMove : MonoBehaviour
         transform.position += new Vector3(0, 1.2f, 0);
         isSkyBlock = false; 
     }
-    
+    IEnumerator jumpcool()
+    {   
+        yield return new WaitForSeconds(0.2f);
+        jump = 0;
+    }
+    IEnumerator DoubleJumpcor()
+    {   
+        rb.velocity += new Vector2(7f, 0);
+        return null;
+    }
 
 }
 
