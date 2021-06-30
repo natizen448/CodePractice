@@ -9,6 +9,10 @@ public class MonsterWalk : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] Animator anim;
     SpriteRenderer sp;
+    void Awake()
+    {
+        Monstermove();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,8 +21,11 @@ public class MonsterWalk : MonoBehaviour
     }
 
     void Update()
-    {
-        Monstermove();
+    {   
+        if(rb.velocity.x == 0)
+        {
+            anim.SetBool("IsMove", false);
+        }
         Monsterdirection();
     }
     void Monsterdirection()
@@ -33,31 +40,13 @@ public class MonsterWalk : MonoBehaviour
         }
     }
     void Monstermove()
-    {
-        if(isstop)  
-        {   
-            isstop = false;
-            StartCoroutine(move());
-            
-            
-        }
- 
-    
+    {   
+        anim.SetBool("IsMove", true);
+        nextMove = Random.Range(-1, 2);
+        rb.velocity += new Vector2(nextMove * 3f, 0);
+        Invoke("Monstermove", 2);
     }
 
-    IEnumerator Think()
-    {    
-        anim.SetBool("IsMove", false); 
-        nextMove = Random.Range(-1, 2);
-        yield return new WaitForSeconds(3f);
-        
-        isstop = true;  
-    }
-    IEnumerator move()
-    {
-        anim.SetBool("IsMove", true);
-        rb.velocity += new Vector2(nextMove * 3f, 0);
-        StartCoroutine(Think());
-        yield return null;
-    }
+
+   
 }
