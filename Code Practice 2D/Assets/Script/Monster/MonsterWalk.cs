@@ -66,12 +66,14 @@ public class MonsterWalk : MonoBehaviour
     }
     IEnumerator Move()
     {
+        anim.SetBool("IsMove", true);
         yield return new WaitForSeconds(2f);
+        
         ismove = false;
         StartCoroutine(NextBehavior());
     }
     IEnumerator NextBehavior()
-    {
+    {   anim.SetBool("IsMove", false);
         yield return new WaitForSeconds(2f);
         Monstermove();
     }
