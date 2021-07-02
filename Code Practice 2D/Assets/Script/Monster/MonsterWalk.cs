@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterWalk : MonoBehaviour
 {
     private int nextMove;
-    private int MoveSpeed;
+    public int MoveSpeed;
     private bool ismove = false;
     Rigidbody2D rb;
     SpriteRenderer sp;
@@ -24,10 +24,7 @@ public class MonsterWalk : MonoBehaviour
 
     void Update()
     {   
-        if(rb.velocity.x == 0)
-        {
-            //anim.SetBool("IsMove", false);
-        }
+     
         if(ismove)
         {
             this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
@@ -68,7 +65,6 @@ public class MonsterWalk : MonoBehaviour
     {
         anim.SetBool("IsMove", true);
         yield return new WaitForSeconds(2f);
-        
         ismove = false;
         StartCoroutine(NextBehavior());
     }
