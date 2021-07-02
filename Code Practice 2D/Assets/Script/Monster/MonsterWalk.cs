@@ -5,7 +5,8 @@ using UnityEngine;
 public class MonsterWalk : MonoBehaviour
 {
     public int nextMove;
-    private bool isstop = true;
+    private int MoveSpeed;
+    private bool ismove = false;
     Rigidbody2D rb;
     [SerializeField] Animator anim;
     SpriteRenderer sp;
@@ -24,7 +25,11 @@ public class MonsterWalk : MonoBehaviour
     {   
         if(rb.velocity.x == 0)
         {
-            anim.SetBool("IsMove", false);
+            //anim.SetBool("IsMove", false);
+        }
+        if(ismove)
+        {
+            this.transform.position += new Vector3(MoveSpeed, 0, 0) * Time.deltaTime;
         }
         Monsterdirection();
     }
@@ -33,20 +38,30 @@ public class MonsterWalk : MonoBehaviour
         if(nextMove > 0)
         {
             sp.flipX = true;
+            MoveSpeed = 3;
         }
         if (nextMove < 0)
         {
             sp.flipX = false;
+            MoveSpeed = -3;
         }
     }
     void Monstermove()
-    {   
-        anim.SetBool("IsMove", true);
-        nextMove = Random.Range(-1, 2);
-        rb.velocity += new Vector2(nextMove * 3f, 0);
-        Invoke("Monstermove", 2);
+    {
+        nextMove = Random.Range(-3, 4);
+        ismove = true;
+        StartCoroutine(Move());
     }
 
-
-   
+    IEnumerator Move()
+    {
+        yield return new WaitForSeconds(2f);
+        ismove = false;
+        StartCoroutine(NextBehavior());
+    }
+    IEnumerator NextBehavior()
+    {
+        yield return new WaitForSeconds(2f);
+        Monstermove();
+    }
 }
