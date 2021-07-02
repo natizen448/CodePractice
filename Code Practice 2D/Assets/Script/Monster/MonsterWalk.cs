@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class MonsterWalk : MonoBehaviour
 {
-    public int nextMove;
+    private int nextMove;
     private int MoveSpeed;
     private bool ismove = false;
     Rigidbody2D rb;
-    [SerializeField] Animator anim;
     SpriteRenderer sp;
+    [SerializeField] Animator anim;
+    
     void Awake()
     {
         Monstermove();
@@ -29,21 +30,22 @@ public class MonsterWalk : MonoBehaviour
         }
         if(ismove)
         {
-            this.transform.position += new Vector3(MoveSpeed, 0, 0) * Time.deltaTime;
+            this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
         }
         Monsterdirection();
+        MonsterAI();
     }
     void Monsterdirection()
     {
         if(nextMove > 0)
         {
             sp.flipX = true;
-            MoveSpeed = 3;
+            MoveSpeed = 1;
         }
         if (nextMove < 0)
         {
             sp.flipX = false;
-            MoveSpeed = -3;
+            MoveSpeed = -1;
         }
     }
     void Monstermove()
@@ -52,7 +54,16 @@ public class MonsterWalk : MonoBehaviour
         ismove = true;
         StartCoroutine(Move());
     }
-
+    void MonsterAI()
+    {
+        Vector2 frontVec = new Vector2(rb.position.x + MoveSpeed * 0.3f, rb.position.y);
+        Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+        RaycastHit2D rayhit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform"));
+        if(rayhit.collider == null)
+        {
+            nextMove *= -1;
+        }
+    }
     IEnumerator Move()
     {
         yield return new WaitForSeconds(2f);
@@ -64,4 +75,6 @@ public class MonsterWalk : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Monstermove();
     }
+
+    
 }
