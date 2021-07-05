@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterWalk : MonoBehaviour
-{
+{   
     private int nextMove;
     public int MoveSpeed;
+    public bool isFindPlayer = false;
     private bool ismove = false;
+    private int count = 1;
+    private int count2 = 1;
     Rigidbody2D rb;
     SpriteRenderer sp;
-    [SerializeField] Animator anim;
-    
+    [SerializeField] public Animator anim;
+    [SerializeField] GameObject MonsterSight;
+
     void Awake()
     {
-        Monstermove();
+        
     }
     void Start()
     {
@@ -23,24 +27,31 @@ public class MonsterWalk : MonoBehaviour
     }
 
     void Update()
-    {   
-     
-        if(ismove)
+    {  
+        if(count == 1)
         {
-            this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
+            Monstermove();
+            count--;
         }
-        Monsterdirection();
-        MonsterAI();
+            
+       if(ismove)
+       {
+            this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
+       }
+
+       Monsterdirection();
+       MonsterAI();
     }
     void Monsterdirection()
     {
         if(nextMove > 0)
-        {
+        {   MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
             sp.flipX = true;
             MoveSpeed = 1;
         }
         if (nextMove < 0)
         {
+            MonsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
             sp.flipX = false;
             MoveSpeed = -1;
         }
@@ -61,6 +72,8 @@ public class MonsterWalk : MonoBehaviour
             nextMove *= -1;
         }
     }
+    
+  
     IEnumerator Move()
     {
         anim.SetBool("IsMove", true);
@@ -71,8 +84,13 @@ public class MonsterWalk : MonoBehaviour
     IEnumerator NextBehavior()
     {   anim.SetBool("IsMove", false);
         yield return new WaitForSeconds(2f);
-        Monstermove();
-    }
 
+        if(!isFindPlayer)
+        {
+        Monstermove();
+        }
+        
+    }
+   
     
 }
