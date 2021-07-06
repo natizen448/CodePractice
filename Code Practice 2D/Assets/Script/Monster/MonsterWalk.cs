@@ -7,6 +7,7 @@ public class MonsterWalk : MonoBehaviour
     private int nextMove;
     public int MoveSpeed;
     public bool isFindPlayer = false;
+    public bool cantFindPlayer = false;
     private bool ismove = false;
     private int count = 1;
     private int count2 = 1;
@@ -84,10 +85,14 @@ public class MonsterWalk : MonoBehaviour
     IEnumerator NextBehavior()
     {   anim.SetBool("IsMove", false);
         yield return new WaitForSeconds(2f);
-
         if(!isFindPlayer)
         {
         Monstermove();
+        }
+        if(cantFindPlayer)
+        {
+            Monstermove();
+            cantFindPlayer = false;
         }
         
     }

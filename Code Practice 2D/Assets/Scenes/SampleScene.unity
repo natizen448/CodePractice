@@ -2728,7 +2728,7 @@ GameObject:
   - component: {fileID: 1429322887}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2748,6 +2748,7 @@ MonoBehaviour:
   MoveSpeed: 0
   isFindPlayer: 0
   anim: {fileID: 1429322884}
+  MonsterSight: {fileID: 1455451333}
 --- !u!95 &1429322884
 Animator:
   serializedVersion: 3
@@ -2916,7 +2917,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attcount: 1
   isFindPlayer: 0
-  anim: {fileID: 1429322884}
 --- !u!70 &1455451336
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2927,11 +2927,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015917128, y: 0.14922787}
-  m_Size: {x: 0.7380039, y: 0.70831925}
+  m_Offset: {x: 0.14357619, y: 0.05863182}
+  m_Size: {x: 0.5789138, y: 0.55090064}
   m_Direction: 1
 --- !u!1 &1990861244
 GameObject:
