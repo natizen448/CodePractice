@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\Player\PlayerDef.cs" />
     <Compile Include="Assets\ZSmartTile\Components\ZST_SmartTile.cs" />
     <Compile Include="Assets\Script\Player\PlayerHeadBoundary.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterAtt.cs" />
     <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
     <Compile Include="Assets\Script\Player\PlayerEffect.cs" />
@@ -69,7 +70,8 @@
     <Compile Include="Assets\Script\Player\PlayerScaffolding.cs" />
     <Compile Include="Assets\Script\Monster\MonsterWalk.cs" />
     <Compile Include="Assets\ZSmartTile\Classes\ZST_MapManager.cs" />
-    <Compile Include="Assets\Script\Monster\MonsterAtt.cs" />
+    <Compile Include="Assets\Script\Monster\RemakeMonsterWalk.cs" />
+    <Compile Include="Assets\Script\Monster\RemakeMonsterAtt.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />

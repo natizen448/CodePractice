@@ -8,9 +8,8 @@ public class MonsterWalk : MonoBehaviour
     public int MoveSpeed;
     public bool isFindPlayer = false;
     public bool cantFindPlayer = false;
-    private bool ismove = false;
-    private int count = 1;
-    private int count2 = 1;
+    public bool ismove = false;
+    public bool startmove = false;
     Rigidbody2D rb;
     SpriteRenderer sp;
     [SerializeField] public Animator anim;
@@ -18,7 +17,7 @@ public class MonsterWalk : MonoBehaviour
 
     void Awake()
     {
-        
+        Monstermove();
     }
     void Start()
     {
@@ -29,19 +28,22 @@ public class MonsterWalk : MonoBehaviour
 
     void Update()
     {  
-        if(count == 1)
+        if(startmove)
         {
+            StopCoroutine(Move());
+            StopCoroutine(NextBehavior());
+
             Monstermove();
-            count--;
+            startmove = false;
         }
             
        if(ismove)
-       {
+       {    
             this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
        }
-
-       Monsterdirection();
-       MonsterAI();
+       
+        Monsterdirection();
+        MonsterAI();
     }
     void Monsterdirection()
     {
@@ -85,17 +87,13 @@ public class MonsterWalk : MonoBehaviour
     IEnumerator NextBehavior()
     {   anim.SetBool("IsMove", false);
         yield return new WaitForSeconds(2f);
-        if(!isFindPlayer)
-        {
+        
         Monstermove();
-        }
-        if(cantFindPlayer)
-        {
-            Monstermove();
-            cantFindPlayer = false;
-        }
+        
+       
         
     }
+  
    
     
 }

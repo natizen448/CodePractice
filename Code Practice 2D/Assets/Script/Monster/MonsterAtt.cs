@@ -22,8 +22,8 @@ public class MonsterAtt : MonoBehaviour
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
         Debug.Log("공격!");   
         mw.anim.SetBool("isatt", true);
-        StartCoroutine(AttClose());
         StartCoroutine(AttCool());
+        StartCoroutine(AttClose());
         pl.HP -= 10;
         yield return null;
     }
@@ -34,34 +34,42 @@ public class MonsterAtt : MonoBehaviour
     }
     IEnumerator AttClose()
     {   
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.5f);
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
         mw.anim.SetBool("isatt", false);
-        mw.isFindPlayer = true;
-        mw.cantFindPlayer = true;
+        
     }
  
     private void OnTriggerEnter2D(Collider2D collision)
     {
-           MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
-        if (collision.CompareTag("Player") && Attcount == 1)
-        {   
-            mw.isFindPlayer = true;
-            isFindPlayer = true;
-            Attcount -= 1;
-        }
-       
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
         if (collision.CompareTag("Player") && Attcount == 1)
         {
-            mw.isFindPlayer = true;
+            StopCoroutine(CantFindPlayer());
+            mw.ismove = false;
             isFindPlayer = true;
             Attcount -= 1;
         }
+
+       
     }
-    
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
+        if (collision.CompareTag("Player"))
+        {
+            StopCoroutine(CantFindPlayer());
+            
+        }
+    }
+    IEnumerator CantFindPlayer()
+    {
+        MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
+        yield return new WaitForSeconds(1f);
+        mw.ismove = true;
+        mw.startmove = true;
+        Debug.Log("공격범위 벗어남");
+    }
 }
