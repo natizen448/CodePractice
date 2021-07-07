@@ -48,13 +48,13 @@ public class MonsterWalk : MonoBehaviour
     void Monsterdirection()
     {
         if(nextMove > 0)
-        {   MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
+        {   
             sp.flipX = true;
             MoveSpeed = 1;
         }
         if (nextMove < 0)
         {
-            MonsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
+            
             sp.flipX = false;
             MoveSpeed = -1;
         }

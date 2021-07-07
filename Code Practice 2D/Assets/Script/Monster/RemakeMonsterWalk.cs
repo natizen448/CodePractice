@@ -11,6 +11,7 @@ public class RemakeMonsterWalk : MonoBehaviour
     Rigidbody2D Rb;
     private int NextDirection;
     private int Dir;
+    private int ChangeDirCount = 1;
     private bool Direction;
     public bool IsMonsterMoved = false;
     public bool CancelAtt = false;
@@ -26,17 +27,21 @@ public class RemakeMonsterWalk : MonoBehaviour
         Walk();
         PreventionFall();
     }
+
     void Walk()
     {
-        if(!CancelAtt)
+        if (!CancelAtt)
         {
-            this.transform.position += new Vector3(MonsterMoveSpeed * Dir, 0,0) * Time.deltaTime;
+            this.transform.position += new Vector3(MonsterMoveSpeed * Dir, 0, 0) * Time.deltaTime;
         }
+
         else
         {
             StopCoroutine(MonsterMoveDirection());
         }
+
     }
+
     void MonsterDirection()
     {   Direction = (NextDirection > 0) ? false : true;
         if (NextDirection == 0)
@@ -46,14 +51,15 @@ public class RemakeMonsterWalk : MonoBehaviour
         else
         {
             StartCoroutine(MoveAnim());
-            if(NextDirection > 0)
+            if (NextDirection > 0)
             {
                 Dir = -1;
             }
             else
-            {
+            { 
                 Dir = 1;
             }
+           
         }
         SR.flipX = Direction;
         StartCoroutine(MonsterMoveDirection());
@@ -61,27 +67,30 @@ public class RemakeMonsterWalk : MonoBehaviour
 
     void PreventionFall()
     {
-        Vector2 frontvec = new Vector2(Rb.position.x, Rb.position.y);
-        Debug.DrawRay(Rb.position, Vector3.down * 2, new Color(0, 1, 0));
+        Vector2 frontvec = new Vector2(Rb.position.x+ (0.3f * Dir), Rb.position.y);
+        Debug.DrawRay(frontvec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(frontvec, Vector3.down,2, LayerMask.GetMask("Platform"));
 
         if (rayhit.collider == null)
-        {
-            Debug.Log("바닥에 아무것도없다.");
+        {   
             Dir *= -1;
+            SR.flipX = (Dir > 0) ? true : false;
         }
     }
+
     IEnumerator MonsterMoveDirection()
     {
         yield return new WaitForSeconds(2f);
         NextDirection = Random.Range(-2, 3);
         MonsterDirection();
     }
+
     IEnumerator MoveAnim()
     {
         anim.SetBool("IsMove", true);
         yield return new WaitForSeconds(2f);
         anim.SetBool("IsMove", false);
     }
-    
+
+
 }
