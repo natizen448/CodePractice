@@ -5,7 +5,7 @@ using UnityEngine;
 public class RemakeMonsterWalk : MonoBehaviour
 {
     [SerializeField] private float MonsterMoveSpeed;
-
+    [SerializeField] private Animator anim;
 
     SpriteRenderer SR;
     Rigidbody2D Rb;
@@ -45,6 +45,7 @@ public class RemakeMonsterWalk : MonoBehaviour
         }
         else
         {
+            StartCoroutine(MoveAnim());
             if(NextDirection > 0)
             {
                 Dir = -1;
@@ -76,6 +77,11 @@ public class RemakeMonsterWalk : MonoBehaviour
         NextDirection = Random.Range(-2, 3);
         MonsterDirection();
     }
-
+    IEnumerator MoveAnim()
+    {
+        anim.SetBool("IsMove", true);
+        yield return new WaitForSeconds(2f);
+        anim.SetBool("IsMove", false);
+    }
     
 }
