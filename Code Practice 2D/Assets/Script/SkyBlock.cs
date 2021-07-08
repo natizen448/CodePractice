@@ -26,12 +26,12 @@ public class SkyBlock : MonoBehaviour
             collision.isTrigger = false;
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("SkyBlock") && rb.velocity.y > 0)
-        {
-            collision.collider.isTrigger = true;
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.CompareTag("SkyBlock") && rb.velocity.y > 0)
+    //    {
+    //        collision.collider.isTrigger = true;
+    //    }
+    //}
 }
 

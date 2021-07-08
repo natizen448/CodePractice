@@ -76,6 +76,7 @@
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />
      <None Include="Assets\Bringer Of Death\License.txt" />
+     <None Include="Assets\Gothicvania Cemetery Artwork\about.txt" />
      <None Include="Assets\Bringer Of Death\Contact.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Unity WorkSpace\2020.3.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

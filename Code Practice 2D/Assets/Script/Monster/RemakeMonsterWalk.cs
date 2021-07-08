@@ -6,6 +6,7 @@ public class RemakeMonsterWalk : MonoBehaviour
 {
     [SerializeField] private float MonsterMoveSpeed;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject MonsterSight;
 
     SpriteRenderer SR;
     Rigidbody2D Rb;
@@ -26,6 +27,16 @@ public class RemakeMonsterWalk : MonoBehaviour
     {
         Walk();
         PreventionFall();
+
+        if(Dir > 0)
+        {
+            MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if(Dir < 0)
+        {
+            MonsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+      
     }
 
     void Walk()
@@ -36,7 +47,7 @@ public class RemakeMonsterWalk : MonoBehaviour
         }
 
         else
-        {
+        {   
             StopCoroutine(MonsterMoveDirection());
         }
 
@@ -47,6 +58,7 @@ public class RemakeMonsterWalk : MonoBehaviour
         if (NextDirection == 0)
         {
             Dir = 0;
+                
         }
         else
         {
@@ -54,14 +66,18 @@ public class RemakeMonsterWalk : MonoBehaviour
             if (NextDirection > 0)
             {
                 Dir = -1;
+                MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
+                SR.flipX = Direction;
             }
             else
             { 
                 Dir = 1;
+                MonsterSight.transform.rotation = Quaternion.Euler(0, -180, 0);
+                SR.flipX = Direction;
             }
            
         }
-        SR.flipX = Direction;
+        
         StartCoroutine(MonsterMoveDirection());
     }
 
@@ -72,19 +88,28 @@ public class RemakeMonsterWalk : MonoBehaviour
         RaycastHit2D rayhit = Physics2D.Raycast(frontvec, Vector3.down,2, LayerMask.GetMask("Platform"));
 
         if (rayhit.collider == null)
-        {   
+        { 
             Dir *= -1;
+            StopCoroutine(MonsterMoveDirection());
+            StartCoroutine(CoolMoveDirection());
             SR.flipX = (Dir > 0) ? true : false;
+
+            
         }
     }
 
-    IEnumerator MonsterMoveDirection()
+    public IEnumerator MonsterMoveDirection()
     {
         yield return new WaitForSeconds(2f);
         NextDirection = Random.Range(-2, 3);
         MonsterDirection();
     }
 
+    IEnumerator CoolMoveDirection()
+    {
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(MonsterMoveDirection());
+    }
     IEnumerator MoveAnim()
     {
         anim.SetBool("IsMove", true);
