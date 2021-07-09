@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class RemakeMonsterWalk : MonoBehaviour
 {
-    [SerializeField] private float MonsterMoveSpeed;
+    [SerializeField] private float monsterMoveSpeed;
     [SerializeField] private Animator anim;
-    [SerializeField] private GameObject MonsterSight;
+    [SerializeField] private GameObject monsterSight;
 
     SpriteRenderer SR;
     Rigidbody2D Rb;
-    private int NextDirection;
-    private int Dir;
-    private int ChangeDirCount = 1;
-    private bool Direction;
-    public bool IsMonsterMoved = false;
-    public bool CancelAtt = false;
+    private int nextDirection;
+    private int dir;
+    private int changeDirCount = 1;
+    private bool direction;
+    public bool isMonsterMoved = false;
+    public bool cancelAtt = false;
 
     void Start()
     {
@@ -28,22 +28,22 @@ public class RemakeMonsterWalk : MonoBehaviour
         Walk();
         PreventionFall();
 
-        if(Dir > 0)
+        if(dir > 0)
         {
-            MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
+            monsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        if(Dir < 0)
+        if(dir < 0)
         {
-            MonsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
+            monsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
       
     }
 
     void Walk()
     {
-        if (!CancelAtt)
+        if (!cancelAtt)
         {
-            this.transform.position += new Vector3(MonsterMoveSpeed * Dir, 0, 0) * Time.deltaTime;
+            this.transform.position += new Vector3(monsterMoveSpeed * dir, 0, 0) * Time.deltaTime;
         }
 
         else
@@ -54,26 +54,26 @@ public class RemakeMonsterWalk : MonoBehaviour
     }
 
     void MonsterDirection()
-    {   Direction = (NextDirection > 0) ? false : true;
-        if (NextDirection == 0)
+    {   direction = (nextDirection > 0) ? false : true;
+        if (nextDirection == 0)
         {
-            Dir = 0;
-                
+            StopCoroutine(MoveAnim());
+            dir = 0;
         }
         else
         {
             StartCoroutine(MoveAnim());
-            if (NextDirection > 0)
+            if (nextDirection > 0)
             {
-                Dir = -1;
-                MonsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
-                SR.flipX = Direction;
+                dir = -1;
+                monsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
+                SR.flipX = direction;
             }
             else
             { 
-                Dir = 1;
-                MonsterSight.transform.rotation = Quaternion.Euler(0, -180, 0);
-                SR.flipX = Direction;
+                dir = 1;
+                monsterSight.transform.rotation = Quaternion.Euler(0, -180, 0);
+                SR.flipX = direction;
             }
            
         }
@@ -83,16 +83,17 @@ public class RemakeMonsterWalk : MonoBehaviour
 
     void PreventionFall()
     {
-        Vector2 frontvec = new Vector2(Rb.position.x+ (0.3f * Dir), Rb.position.y);
+        Vector2 frontvec = new Vector2(Rb.position.x+ (0.3f * dir), Rb.position.y);
         Debug.DrawRay(frontvec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(frontvec, Vector3.down,2, LayerMask.GetMask("Platform"));
 
         if (rayhit.collider == null)
         { 
-            Dir *= -1;
-            StopCoroutine(MonsterMoveDirection());
+            
+            dir *= -1;
+            StopAllCoroutines();
             StartCoroutine(CoolMoveDirection());
-            SR.flipX = (Dir > 0) ? true : false;
+            SR.flipX = (dir > 0) ? true : false;
 
             
         }
@@ -101,13 +102,13 @@ public class RemakeMonsterWalk : MonoBehaviour
     public IEnumerator MonsterMoveDirection()
     {
         yield return new WaitForSeconds(2f);
-        NextDirection = Random.Range(-2, 3);
+        nextDirection = Random.Range(-2, 3);
         MonsterDirection();
     }
 
     IEnumerator CoolMoveDirection()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         StartCoroutine(MonsterMoveDirection());
     }
     IEnumerator MoveAnim()

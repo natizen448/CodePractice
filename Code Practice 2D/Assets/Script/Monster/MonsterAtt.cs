@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterAtt : MonoBehaviour
 {   
-    public int Attcount = 1;
+    public int attCount = 1;
     public bool isFindPlayer = false;
 
     void Update()
@@ -30,7 +30,7 @@ public class MonsterAtt : MonoBehaviour
     IEnumerator AttCool()
     {   
         yield return new WaitForSeconds(2f);
-        Attcount = 1;
+        attCount = 1;
     }
     IEnumerator AttClose()
     {   
@@ -43,12 +43,12 @@ public class MonsterAtt : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
-        if (collision.CompareTag("Player") && Attcount == 1)
+        if (collision.CompareTag("Player") && attCount == 1)
         {
             StopCoroutine(CantFindPlayer());
-            mw.ismove = false;
+            mw.isMove = false;
             isFindPlayer = true;
-            Attcount -= 1;
+            attCount -= 1;
         }
 
        
@@ -68,8 +68,8 @@ public class MonsterAtt : MonoBehaviour
     {
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
         yield return new WaitForSeconds(1f);
-        mw.ismove = true;
-        mw.startmove = true;
+        mw.isMove = true;
+        mw.startMove = true;
         Debug.Log("공격범위 벗어남");
     }
 }

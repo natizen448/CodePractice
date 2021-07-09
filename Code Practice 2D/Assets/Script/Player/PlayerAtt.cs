@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerAtt : MonoBehaviour
 {
     private Animator anim;
-    private int SetRangeCount = 1;
-    [SerializeField] GameObject AttRange;
+    private int setRangeCount = 1;
+    [SerializeField] GameObject attRange;
 
     void Update()
     {
@@ -22,11 +22,11 @@ public class PlayerAtt : MonoBehaviour
             if (Input.GetMouseButton(0)) 
             {   
             anim.SetBool("isatt", true);
-            AttRange.SetActive(true);
-            if(SetRangeCount > 0)
+            attRange.SetActive(true);
+            if(setRangeCount > 0)
             {
                StartCoroutine(SetAttRange());
-               SetRangeCount--;
+               setRangeCount--;
             }
             
             }
@@ -43,8 +43,8 @@ public class PlayerAtt : MonoBehaviour
     {   
 
         yield return new WaitForSeconds(0.3f);
-        AttRange.SetActive(false);
-        SetRangeCount = 1;
+        attRange.SetActive(false);
+        setRangeCount = 1;
 
     }
  

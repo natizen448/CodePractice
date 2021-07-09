@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     private float moveSpeed;
     private float dashSpeed;
     private float jumpSpeed;
-    public int Jumpcount = 1;
+    public int jumpCount = 1;
     public bool isDash = false;
     public bool isSlid = false;
     public bool isSkyBlock = false;
@@ -16,8 +16,8 @@ public class PlayerMove : MonoBehaviour
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
-    [SerializeField] GameObject Scaffolding;
-    [SerializeField] GameObject PlayerHeadBoundary;
+    [SerializeField] GameObject scaffolding;
+    [SerializeField] GameObject playerHeadBoundary;
     void Start()
     {   
         
@@ -31,8 +31,8 @@ public class PlayerMove : MonoBehaviour
         PlayerInfo pl = GameObject.Find("Player").GetComponent<PlayerInfo>();
         anim = pl.anim;
         moveSpeed = pl.speed;
-        dashSpeed = pl.dashspeed;
-        jumpSpeed = pl.jumpspeed;
+        dashSpeed = pl.dashSpeed;
+        jumpSpeed = pl.jumpSpeed;
         MovePlayer();
         dash();
         Sliding();
@@ -64,23 +64,23 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && Jumpcount == 1)
+        if (Input.GetKey(KeyCode.Space) && jumpCount == 1)
         {
             rb.velocity += new Vector2(0, jumpSpeed);
             anim.SetBool("isjump", true);
-            Scaffolding.SetActive(false);
-            PlayerHeadBoundary.SetActive(true);
+            scaffolding.SetActive(false);
+            playerHeadBoundary.SetActive(true);
             if (rb.velocity.y > 0)
             {
-                Jumpcount--;
+                jumpCount--;
             }
         }
 
         if (rb.velocity.y < 0)
         {
             anim.SetBool("isjump", false);
-            Scaffolding.SetActive(true);
-            PlayerHeadBoundary.SetActive(false);
+            scaffolding.SetActive(true);
+            playerHeadBoundary.SetActive(false);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {

@@ -12,11 +12,11 @@ public class PlayerScaffolding : MonoBehaviour
         PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
         if (collision.gameObject.tag == "Floor" && !pm.isSlid)
         {
-            pm.Jumpcount = 1;
+            pm.jumpCount = 1;
         }
         if (collision.gameObject.tag == "SkyBlock" && !pm.isSlid)
         {
-            pm.Jumpcount = 1;
+            pm.jumpCount = 1;
         }
      
     }

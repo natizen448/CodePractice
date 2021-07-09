@@ -5,15 +5,15 @@ using UnityEngine;
 public class MonsterWalk : MonoBehaviour
 {   
     private int nextMove;
-    public int MoveSpeed;
+    public int moveSpeed;
     public bool isFindPlayer = false;
     public bool cantFindPlayer = false;
-    public bool ismove = false;
-    public bool startmove = false;
+    public bool isMove = false;
+    public bool startMove = false;
     Rigidbody2D rb;
     SpriteRenderer sp;
     [SerializeField] public Animator anim;
-    [SerializeField] GameObject MonsterSight;
+    [SerializeField] GameObject monsterSight;
 
     void Awake()
     {
@@ -28,18 +28,18 @@ public class MonsterWalk : MonoBehaviour
 
     void Update()
     {  
-        if(startmove)
+        if(startMove)
         {
             StopCoroutine(Move());
             StopCoroutine(NextBehavior());
 
             Monstermove();
-            startmove = false;
+            startMove = false;
         }
             
-       if(ismove)
+       if(isMove)
        {    
-            this.transform.position += new Vector3(MoveSpeed * 2f, 0, 0) * Time.deltaTime;
+            this.transform.position += new Vector3(moveSpeed * 2f, 0, 0) * Time.deltaTime;
        }
        
         Monsterdirection();
@@ -50,24 +50,24 @@ public class MonsterWalk : MonoBehaviour
         if(nextMove > 0)
         {   
             sp.flipX = true;
-            MoveSpeed = 1;
+            moveSpeed = 1;
         }
         if (nextMove < 0)
         {
             
             sp.flipX = false;
-            MoveSpeed = -1;
+            moveSpeed = -1;
         }
     }
     void Monstermove()
     {
         nextMove = Random.Range(-3, 4);
-        ismove = true;
+        isMove = true;
         StartCoroutine(Move());
     }
     void MonsterAI()
     {
-        Vector2 frontVec = new Vector2(rb.position.x + MoveSpeed * 0.3f, rb.position.y);
+        Vector2 frontVec = new Vector2(rb.position.x + moveSpeed * 0.3f, rb.position.y);
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayhit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform"));
         if(rayhit.collider == null)
@@ -81,7 +81,7 @@ public class MonsterWalk : MonoBehaviour
     {
         anim.SetBool("IsMove", true);
         yield return new WaitForSeconds(2f);
-        ismove = false;
+        isMove = false;
         StartCoroutine(NextBehavior());
     }
     IEnumerator NextBehavior()

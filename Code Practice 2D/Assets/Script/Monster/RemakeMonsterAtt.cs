@@ -5,7 +5,7 @@ using UnityEngine;
 public class RemakeMonsterAtt : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] private int MonsterDamgage;
+    [SerializeField] private int monsterDamgage;
 
     private int AttCount = 1;
     void Start()
@@ -27,7 +27,7 @@ public class RemakeMonsterAtt : MonoBehaviour
             if (AttCount > 0)
             {
                 RemakeMonsterWalk mw = GameObject.Find("Monster").GetComponent<RemakeMonsterWalk>();
-                mw.CancelAtt = true;
+                mw.cancelAtt = true;
                 AttCount--;
                 
                 StartCoroutine(Att());
@@ -45,7 +45,7 @@ public class RemakeMonsterAtt : MonoBehaviour
             anim.SetBool("isatt", false);
             AttCount = 1;
             mw.StartCoroutine(mw.MonsterMoveDirection());
-            mw.CancelAtt = false;
+            mw.cancelAtt = false;
         }
     }
 
@@ -54,7 +54,7 @@ public class RemakeMonsterAtt : MonoBehaviour
        
         yield return new WaitForSeconds(1f);
         anim.SetBool("isatt", true);
-        pi.HP -= MonsterDamgage;
+        pi.HP -= monsterDamgage;
         StartCoroutine(AttClose());
     }
     IEnumerator AttClose()
