@@ -280,12 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefaea106047668438a51d365cec05ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jumpcount: 1
+  jumpCount: 1
   isDash: 0
   isSlid: 0
   isSkyBlock: 0
-  Scaffolding: {fileID: 796386279}
-  PlayerHeadBoundary: {fileID: 905747198}
+  scaffolding: {fileID: 796386279}
+  playerHeadBoundary: {fileID: 905747198}
 --- !u!95 &329846108
 Animator:
   serializedVersion: 3
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2105383253bc774096e21b7cdfedc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttRange: {fileID: 885389285}
+  attRange: {fileID: 885389285}
 --- !u!114 &329846110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,12 +332,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 329846108}
   HP: 100
-  Att: 10
+  att: 10
   def: 20
   mana: 100
   speed: 3
-  jumpspeed: 5
-  dashspeed: 7
+  jumpSpeed: 5
+  dashSpeed: 10
 --- !u!114 &329846111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,11 +2972,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49905dbc2554e249913e41c8dbbe29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterMoveSpeed: 2
+  monsterMoveSpeed: 2
   anim: {fileID: 1429322884}
-  MonsterSight: {fileID: 1455451333}
-  IsMonsterMoved: 0
-  CancelAtt: 0
+  monsterSight: {fileID: 1455451333}
+  player: {fileID: 329846101}
+  isMonsterMoved: 0
+  cancelAtt: 0
+  directionFixing: 0
 --- !u!95 &1429322884
 Animator:
   serializedVersion: 3
@@ -3112,6 +3114,7 @@ GameObject:
   - component: {fileID: 1455451336}
   - component: {fileID: 1455451337}
   - component: {fileID: 1455451335}
+  - component: {fileID: 1455451338}
   m_Layer: 0
   m_Name: MonsterSight
   m_TagString: Untagged
@@ -3140,13 +3143,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455451333}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 686acc68be070b14e903368d5f7d6bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1429322884}
-  MonsterDamgage: 2
+  monsterDamgage: 3
 --- !u!70 &1455451336
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3184,6 +3187,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1455451338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455451333}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686acc68be070b14e903368d5f7d6bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  monsterDamgage: 0
 --- !u!1 &1990861244
 GameObject:
   m_ObjectHideFlags: 0

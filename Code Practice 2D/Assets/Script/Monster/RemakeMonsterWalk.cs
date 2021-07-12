@@ -7,15 +7,17 @@ public class RemakeMonsterWalk : MonoBehaviour
     [SerializeField] private float monsterMoveSpeed;
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject monsterSight;
-
+    [SerializeField] private GameObject player;
     SpriteRenderer SR;
     Rigidbody2D Rb;
     private int nextDirection;
     private int dir;
     private int changeDirCount = 1;
+    private float playerx;
     private bool direction;
     public bool isMonsterMoved = false;
     public bool cancelAtt = false;
+    public bool directionFixing = false;
 
     void Start()
     {
@@ -27,7 +29,6 @@ public class RemakeMonsterWalk : MonoBehaviour
     {
         Walk();
         PreventionFall();
-
         if(dir > 0)
         {
             monsterSight.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -36,7 +37,9 @@ public class RemakeMonsterWalk : MonoBehaviour
         {
             monsterSight.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-      
+        
+
+       
     }
 
     void Walk()
@@ -54,7 +57,8 @@ public class RemakeMonsterWalk : MonoBehaviour
     }
 
     void MonsterDirection()
-    {   direction = (nextDirection > 0) ? false : true;
+    {   
+        direction = (nextDirection > 0) ? false : true;
         if (nextDirection == 0)
         {
             StopCoroutine(MoveAnim());
@@ -105,6 +109,7 @@ public class RemakeMonsterWalk : MonoBehaviour
         nextDirection = Random.Range(-2, 3);
         MonsterDirection();
     }
+    
 
     IEnumerator CoolMoveDirection()
     {

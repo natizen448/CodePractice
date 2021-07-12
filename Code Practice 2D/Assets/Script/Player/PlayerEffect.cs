@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerEffect : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    private bool Dash;
+    private bool dash;
     
 
      void Start()
@@ -15,14 +15,14 @@ public class PlayerEffect : MonoBehaviour
     void Update()
     {   
         PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
-        Dash = pm.isDash;
-        dasheffect();
+        dash = pm.isDash;
+        Dasheffect();
         
     }
 
-    void dasheffect()
+    void Dasheffect()
     {
-        anim.SetBool("isdash", Dash);
+        anim.SetBool("isdash", dash);
 
     }
 

@@ -64,7 +64,7 @@ public class MonsterAtt : MonoBehaviour
             
         }
     }
-    IEnumerator CantFindPlayer()
+    IEnumerator CantFindPlayer()    
     {
         MonsterWalk mw = GameObject.Find("Monster").GetComponent<MonsterWalk>();
         yield return new WaitForSeconds(1f);

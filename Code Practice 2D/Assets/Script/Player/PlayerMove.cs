@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
         dashSpeed = pl.dashSpeed;
         jumpSpeed = pl.jumpSpeed;
         MovePlayer();
-        dash();
+        Dash();
         Sliding();
         DoubleJump();
         if (isSkyBlock)
@@ -93,7 +93,7 @@ public class PlayerMove : MonoBehaviour
       
     }
 
-    void dash()
+    void Dash()
     {
         if(Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift) && isDashCoolDown)
         {   
@@ -144,7 +144,7 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             jump += 1;
-            StartCoroutine(jumpcool());
+            StartCoroutine(Jumpcool());
         }
         if(jump > 1)
         {
@@ -172,7 +172,7 @@ public class PlayerMove : MonoBehaviour
         transform.position += new Vector3(0, 1.2f, 0);
         isSkyBlock = false; 
     }
-    IEnumerator jumpcool()
+    IEnumerator Jumpcool()
     {   
         yield return new WaitForSeconds(0.2f);
         jump = 0;
