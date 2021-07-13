@@ -9,7 +9,7 @@ public class PlayerScaffolding : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
+        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         if (collision.gameObject.tag == "Floor" && !pm.isSlid)
         {
             pm.jumpCount = 1;

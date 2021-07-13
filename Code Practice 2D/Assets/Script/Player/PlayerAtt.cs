@@ -10,7 +10,7 @@ public class PlayerAtt : MonoBehaviour
 
     void Update()
     {
-        PlayerInfo pl = GameObject.Find("Player").GetComponent<PlayerInfo>();
+        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         anim = pl.anim;
         Att();
     }

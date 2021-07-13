@@ -14,7 +14,7 @@ public class PlayerEffect : MonoBehaviour
      }
     void Update()
     {   
-        PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
+        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         dash = pm.isDash;
         Dasheffect();
         

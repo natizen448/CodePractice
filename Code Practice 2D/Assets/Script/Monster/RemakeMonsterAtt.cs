@@ -34,8 +34,9 @@ public class RemakeMonsterAtt : MonoBehaviour
 
 
     IEnumerator Att()
-    {   RemakeMonsterWalk mw = GameObject.Find("Monster").GetComponent<RemakeMonsterWalk>();
-        PlayerInfo pi = GameObject.Find("Player").GetComponent<PlayerInfo>();
+    {
+        RemakeMonsterWalk mw = GameObject.FindWithTag("Monster").GetComponent<RemakeMonsterWalk>();
+        PlayerInfo pi = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         mw.cancelAtt = true;
         mw.StopAllCoroutines();
         pi.HP -= monsterDamgage;      

@@ -18,7 +18,7 @@ public class PlayerHeadBoundary : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMove pm = GameObject.Find("Player").GetComponent<PlayerMove>();
+        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
         if (collision.CompareTag("SkyBlock"))
         { 
             pm.isSkyBlock = true;

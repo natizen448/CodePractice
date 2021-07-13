@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\SkyBlock.cs" />
     <Compile Include="Assets\Script\Player\PlayerDef.cs" />
+    <Compile Include="Assets\Script\Monster\RemakeMonsterWalk.cs" />
     <Compile Include="Assets\ZSmartTile\Components\ZST_SmartTile.cs" />
     <Compile Include="Assets\Script\Player\PlayerHeadBoundary.cs" />
     <Compile Include="Assets\Script\Monster\MonsterAtt.cs" />
@@ -66,12 +67,13 @@
     <Compile Include="Assets\Script\Player\PlayerEffect.cs" />
     <Compile Include="Assets\ZSmartTile\Components\ZST_SnapToGrid.cs" />
     <Compile Include="Assets\Script\Player\PlayerAtt.cs" />
+    <Compile Include="Assets\Script\Monster\RemakeMonsterAtt.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <Compile Include="Assets\Script\Player\PlayerScaffolding.cs" />
     <Compile Include="Assets\Script\Monster\MonsterWalk.cs" />
     <Compile Include="Assets\ZSmartTile\Classes\ZST_MapManager.cs" />
-    <Compile Include="Assets\Script\Monster\RemakeMonsterWalk.cs" />
-    <Compile Include="Assets\Script\Monster\RemakeMonsterAtt.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterMove.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterAttack.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />

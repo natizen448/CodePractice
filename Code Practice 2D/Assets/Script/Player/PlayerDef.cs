@@ -13,7 +13,7 @@ public class PlayerDef : MonoBehaviour
     
     void Update()
     {
-        PlayerInfo pl = GameObject.Find("Player").GetComponent<PlayerInfo>();
+        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         anim = pl.anim;
         Def();
         DefenseSpeed();
@@ -21,7 +21,7 @@ public class PlayerDef : MonoBehaviour
 
     void DefenseSpeed()
     {
-        PlayerInfo pl = GameObject.Find("Player").GetComponent<PlayerInfo>();
+        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         if (Input.GetMouseButton(1))
         {
             pl.speed = 1f;

@@ -12,8 +12,6 @@ public class RemakeMonsterWalk : MonoBehaviour
     Rigidbody2D Rb;
     private int nextDirection;
     private int dir;
-    private int changeDirCount = 1;
-    private float playerx;
     private bool direction;
     public bool isMonsterMoved = false;
     public bool cancelAtt = false;
@@ -46,6 +44,7 @@ public class RemakeMonsterWalk : MonoBehaviour
     {
         if (!cancelAtt)
         {
+            Debug.Log("움직이는중");
             this.transform.position += new Vector3(monsterMoveSpeed * dir, 0, 0) * Time.deltaTime;
         }
 
