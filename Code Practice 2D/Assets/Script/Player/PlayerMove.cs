@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     public bool isSlid = false;
     public bool isSkyBlock = false;
     private int jump = 0;
+    public int dir;
     private bool isDashCoolDown = true;
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
@@ -50,6 +51,7 @@ public class PlayerMove : MonoBehaviour
             if(!Input.GetMouseButton(1))
             {
                 this.transform.rotation = Quaternion.Euler(0, 180, 0);
+                dir = -1;
             }
         }
       
@@ -60,6 +62,7 @@ public class PlayerMove : MonoBehaviour
             if (!Input.GetMouseButton(1))
             {
                 this.transform.rotation = Quaternion.Euler(0, 0, 0);
+                dir = 1;
             }
         }
 
