@@ -5,14 +5,15 @@ using UnityEngine;
 public class Rope : MonoBehaviour
 {
     private float Raylength;
+    PlayerMove pm;
     void Start()
     {
-        
+        pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {   PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+    {   
         
         if (Input.GetKey(KeyCode.F))
         {

@@ -6,15 +6,15 @@ public class PlayerEffect : MonoBehaviour
 {
     [SerializeField] Animator anim;
     private bool dash;
-    
+    PlayerMove pm;
 
-     void Start()
+    void Start()
      {
-        
-     }
+        pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+    }
     void Update()
     {   
-        PlayerMove pm = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+        
         dash = pm.isDash;
         Dasheffect();
         

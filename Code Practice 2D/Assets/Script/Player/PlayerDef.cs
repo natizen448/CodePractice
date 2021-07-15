@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class PlayerDef : MonoBehaviour
 {
-    
+    PlayerInfo pi;
     private Animator anim;
     void Start()
     {   
-        
+        pi = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
     }
     
     void Update()
     {
-        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
-        anim = pl.anim;
+        
+        anim = pi.anim;
         Def();
         DefenseSpeed();
     }
 
     void DefenseSpeed()
     {
-        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         if (Input.GetMouseButton(1))
         {
-            pl.speed = 1f;
+            pi.speed = 1f;
         }
         else
         {
-            pl.speed = 3.5f;
+            pi.speed = 3.5f;
         }
     }
 

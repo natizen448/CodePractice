@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {   
-    private Animator anim;
+    public Animator anim;
+    SpriteRenderer sr;
     private float moveSpeed;
     private float dashSpeed;
     private float jumpSpeed;
@@ -12,6 +13,8 @@ public class PlayerMove : MonoBehaviour
     public bool isDash = false;
     public bool isSlid = false;
     public bool isSkyBlock = false;
+    public bool isLeft = false;
+    public bool isRight = false;
     private int jump = 0;
     public int dir;
     private bool isDashCoolDown = true;
@@ -19,17 +22,21 @@ public class PlayerMove : MonoBehaviour
     private CapsuleCollider2D cc2;
     [SerializeField] GameObject scaffolding;
     [SerializeField] GameObject playerHeadBoundary;
+    
+
+    PlayerInfo pl;
+    Hook hook;
     void Start()
     {   
         
         rb = GetComponent<Rigidbody2D>();
         cc2 = GetComponent<CapsuleCollider2D>();
-        
+        pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
+        hook = GameObject.FindWithTag("Player").GetComponent<Hook>();
     }
 
     void Update()
     {
-        PlayerInfo pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
         anim = pl.anim;
         moveSpeed = pl.speed;
         dashSpeed = pl.dashSpeed;
@@ -40,12 +47,31 @@ public class PlayerMove : MonoBehaviour
         DoubleJump();
         if (isSkyBlock)
             StartCoroutine(SkyBlock());
-            
+        
+
+        if(hook.isAttach)
+        {
+            if(dir == -1)
+            {
+                isRight = true;
+            }
+            if (dir == 1)
+            {
+                isLeft = true;
+            }
+
+        }
+        else
+        {
+            isRight = false;
+            isLeft = false;
+        }
     }
+    
 
     void MovePlayer()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isLeft)
         {
             this.transform.position += new Vector3(-moveSpeed,0,0) * Time.deltaTime;
             if(!Input.GetMouseButton(1))
@@ -55,7 +81,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
       
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !isRight)
         {
             this.transform.position += new Vector3(moveSpeed, 0, 0) * Time.deltaTime;
 
