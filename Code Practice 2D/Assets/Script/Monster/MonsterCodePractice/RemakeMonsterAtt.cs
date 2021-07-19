@@ -45,7 +45,7 @@ public class RemakeMonsterAtt : MonoBehaviour
         mw.dir = 0;
         mw.cancelAtt = true;
         mw.StopAllCoroutines();
-        pi.HP -= monsterDamgage;      
+        pi.HP -= (monsterDamgage - (monsterDamgage * (pi.def / 100)));     
         anim.SetBool("isatt", true);
         AttCount--;
         Debug.Log(pi.HP);

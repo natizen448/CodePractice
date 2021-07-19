@@ -23,11 +23,13 @@ public class PlayerDef : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
+            pi.def = 40f;
             pi.speed = 1f;
         }
         else
         {
             pi.speed = 3.5f;
+            pi.def = 20f;
         }
     }
 
