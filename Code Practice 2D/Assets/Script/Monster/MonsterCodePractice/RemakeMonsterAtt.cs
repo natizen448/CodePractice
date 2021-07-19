@@ -56,16 +56,13 @@ public class RemakeMonsterAtt : MonoBehaviour
     IEnumerator AttClose()
     {
         StartCoroutine(AttCool());
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.9f);
         anim.SetBool("isatt", false);
         anim.SetBool("IsMove", false);
         mw.StartCoroutine(mw.MonsterMoveDirection());
         yield return new WaitForSeconds(2f);
         mw.cancelAtt = false;
-       
         AttCount = 1;
-
-
     }
     IEnumerator AttCool()
     {

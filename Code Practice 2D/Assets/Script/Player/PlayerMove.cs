@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {   
@@ -9,17 +10,24 @@ public class PlayerMove : MonoBehaviour
     private float moveSpeed;
     private float dashSpeed;
     private float jumpSpeed;
+    private float nowDrag;
+
     public int jumpCount = 1;
+    private int jump = 0;
+    public int dir;
+
+
     public bool isDash = false;
     public bool isSlid = false;
     public bool isSkyBlock = false;
     public bool isLeft = false;
     public bool isRight = false;
-    private int jump = 0;
-    public int dir;
     private bool isDashCoolDown = true;
+
+
     private Rigidbody2D rb;
     private CapsuleCollider2D cc2;
+    [SerializeField]private Image dashCool;
     [SerializeField] GameObject scaffolding;
     [SerializeField] GameObject playerHeadBoundary;
     
@@ -44,11 +52,14 @@ public class PlayerMove : MonoBehaviour
         MovePlayer();
         Dash();
         Sliding();
-        DoubleJump();
+        //DoubleJump();
         if (isSkyBlock)
             StartCoroutine(SkyBlock());
         
-
+        if(dashCool.fillAmount != 1)
+        {
+            dashCool.fillAmount += Time.deltaTime * 0.33f;
+        }
         if(hook.isAttach)
         {
             if(dir == -1)
@@ -167,27 +178,29 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void DoubleJump()
-    {   
+    //void DoubleJump()
+    //{   
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            jump += 1;
-            StartCoroutine(Jumpcool());
-        }
-        if(jump > 1)
-        {
-            StartCoroutine(DoubleJumpcor());
-        }
-    }
+    //    if(Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        jump += 1;
+    //        StartCoroutine(Jumpcool());
+    //    }
+    //    if(jump > 1)
+    //    {
+    //        StartCoroutine(DoubleJumpcor());
+    //    }
+    //}
 
     IEnumerator Dash(int direction)
-    {
+    {   
         rb.velocity += new Vector2(dashSpeed * direction, 0);
+        dashCool.fillAmount = 0;
+        nowDrag = rb.drag;
         rb.drag = 2f;
         yield return new WaitForSeconds(0.3f);
         isDash = false;
-        rb.drag = 1f;
+        rb.drag = nowDrag;
     }
 
     IEnumerator DashCool()
@@ -206,11 +219,11 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         jump = 0;
     }
-    IEnumerator DoubleJumpcor()
-    {   
-        rb.velocity += new Vector2(7f, 0);
-        return null;
-    }
+    //IEnumerator DoubleJumpcor()
+    //{   
+    //    rb.velocity += new Vector2(7f, 0);
+    //    return null;
+    //}
 
 }
 
