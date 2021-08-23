@@ -74,12 +74,13 @@
     <Compile Include="Assets\Script\Monster\MonsterCodePractice\MonsterAtt2.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <Compile Include="Assets\Script\Monster\MonsterCodePractice\MonsterWalk4.cs" />
+    <Compile Include="Assets\Script\Monster\Monster.cs" />
     <Compile Include="Assets\Script\Player\PlayerScaffolding.cs" />
     <Compile Include="Assets\Script\Player\Hookg.cs" />
     <Compile Include="Assets\Script\Monster\MonsterCodePractice\MonsterWalk5.cs" />
     <Compile Include="Assets\Script\Monster\MonsterCodePractice\MonsterWalk3.cs" />
     <Compile Include="Assets\ZSmartTile\Classes\ZST_MapManager.cs" />
-    <Compile Include="Assets\Script\Monster\Monster.cs" />
+    <Compile Include="Assets\Script\Monster\MonsterCreate.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Knight Files\Read Me.txt" />
