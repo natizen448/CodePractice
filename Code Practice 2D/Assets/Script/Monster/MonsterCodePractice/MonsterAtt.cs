@@ -7,12 +7,12 @@ public class MonsterAtt : MonoBehaviour
     public int attCount = 1;
     public bool isFindPlayer = false;
     PlayerInfo pl;
-    MonsterWalk mw;
+    MonsterWalk3 mw;
 
     private void Start()
     {
         pl = GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
-        mw = GameObject.FindWithTag("Monster").GetComponent<MonsterWalk>();
+        mw = GameObject.FindWithTag("Monster").GetComponent<MonsterWalk3>();
     }
     void Update()
     {

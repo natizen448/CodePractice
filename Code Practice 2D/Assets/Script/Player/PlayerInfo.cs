@@ -13,6 +13,8 @@ public class PlayerInfo : MonoBehaviour
     public float jumpSpeed = 5f;
     public float dashSpeed = 10f;
 
+
+
     void Start()
     {
         
