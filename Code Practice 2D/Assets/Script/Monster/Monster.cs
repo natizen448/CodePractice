@@ -4,7 +4,8 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {   
     [SerializeField]private float monsterMoveSpeed;
-    [SerializeField] private float monsterAtt;
+    [SerializeField]private float monsterAtt;
+    [SerializeField]private float monsterHp;
 
     private int monsterMoveDirection;
     private int monsterAttCount = 1;
@@ -97,13 +98,21 @@ public class Monster : MonoBehaviour
         StartCoroutine(MonsterAttCooldown());
     }
 
+    void Dead()//몬스터 사망
+    {
+        if(monsterHp == 0)
+        {  
+            Destroy(this.gameObject);
+        }
+    }
+
     void FixedUpdate()
     {
         if (monsterAttCount > 0)
         {
             MonsterSight();
         }
-
+        Dead();
         MonsterMove();
         PreventionFall();
     }
@@ -114,6 +123,20 @@ public class Monster : MonoBehaviour
         monsterAttCount = 1;
         NextDirection();
     }
-    
+
+    IEnumerator MonsterHit()
+    {
+        yield return new WaitForSeconds(1f);
+        monsterHp -= pi.att;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("PlayerAttRange"))//플레이어에게 공격을 맞았을때
+        {
+            StartCoroutine(MonsterHit());
+            Debug.Log(this.name + monsterHp);
+        }
+    }
 }
 
