@@ -62,9 +62,9 @@ public class Monster : MonoBehaviour
     
     void PreventionFall()//몬스터가 다른층으로 떨어지는것을 방지
     {
-        Vector2 frontVec = new Vector2(rb.position.x + monsterMoveDirection * 0.3f, rb.velocity.y - 0.3f);//자기 앞으로 1만큼 떨어진위치
+        Vector2 frontVec = new Vector2(rb.position.x + monsterMoveDirection * 0.3f, rb.position.y - 0.3f);//자기 앞으로 1만큼 떨어진위치
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform"));//플레이어 앞쪽으로 레이를 쏴서 Platform만 인식한다.
-        //Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
         
         if (rayHit.collider == null)//레이에 아무것도 안잡히면 방향전환후 함수재실행
         {
@@ -75,9 +75,9 @@ public class Monster : MonoBehaviour
 
     void MonsterSight()//플레이어를 발견하는 코드
     {
-        Vector2 fowardVec = new Vector2(rb.position.x, rb.velocity.y);
-        RaycastHit2D monsterSight = Physics2D.Raycast(fowardVec, new Vector3(monsterMoveDirection * 2, 0, 0), 2, LayerMask.GetMask("Player"));
-        Debug.DrawRay(fowardVec, new Vector3(monsterMoveDirection * 2, 0, 0), new Color(0, 1, 0));
+        Vector2 fowardVec = new Vector2(rb.position.x, rb.position.y);
+        RaycastHit2D monsterSight = Physics2D.Raycast(fowardVec, Vector3.forward*monsterMoveDirection, 2, LayerMask.GetMask("Player"));
+        Debug.DrawRay(fowardVec, Vector3.forward * monsterMoveDirection, new Color(0, 1, 0));
 
         if (monsterSight.collider != null)
         {

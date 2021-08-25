@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637588261555806646
-    m_Hash: 2204306383
+      ticks: 637653906187479756
+    m_Hash: 388335746
   m_LockFileStatus:
     m_FilePath: "C:/Users/natiz/OneDrive/\uBB38\uC11C/GitHub/CodePractice/Code Practice
       2D/Packages/packages-lock.json"
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637588261659581341
-    m_Hash: 3394294237
+      ticks: 637653906277498924
+    m_Hash: 1079922075
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -80,6 +80,8 @@ m_PackageAssets:
         - 3.2.5
         - 3.2.6
         - 3.2.9
+        - 3.2.10
+        - 3.2.11
         - 4.0.0
         - 4.0.1
         - 4.1.0
@@ -97,14 +99,22 @@ m_PackageAssets:
         - 5.0.3
         - 5.0.4
         - 5.0.5
+        - 5.0.6
+        - 5.0.7
         - 6.0.0-pre.1
         - 6.0.0-pre.2
         - 6.0.1
         - 6.0.3
+        - 6.0.4
+        - 6.0.5
+        - 7.0.0-pre.2
+        - 7.0.0-pre.3
         compatible:
         - 5.0.4
         - 5.0.5
-        verified: 5.0.5
+        - 5.0.6
+        - 5.0.7
+        verified: 5.0.7
       dependencies:
       - name: com.unity.2d.common
         version: 4.0.3
@@ -203,6 +213,7 @@ m_PackageAssets:
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.0
+        - 5.0.1
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -287,11 +298,15 @@ m_PackageAssets:
         - 4.0.0
         - 4.0.1
         - 4.0.2
+        - 4.1.0
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.1
         - 5.0.3
+        - 5.0.4
         - 6.0.0-pre.2
+        - 6.0.0-pre.3
+        - 6.0.0-pre.4
         compatible:
         - 4.0.2
         verified: 4.0.2
@@ -452,6 +467,7 @@ m_PackageAssets:
         - 3.0.14
         - 3.0.15
         - 3.0.16
+        - 3.0.17
         - 4.0.0
         - 4.0.1
         - 4.0.2
@@ -468,14 +484,20 @@ m_PackageAssets:
         - 5.1.0
         - 5.1.1
         - 5.1.2
+        - 5.1.3
+        - 5.1.4
         - 6.0.0-pre.1
         - 6.0.0-pre.2
         - 6.0.0
+        - 6.0.1
         - 7.0.0-pre.2
+        - 7.0.0-pre.3
         compatible:
         - 5.1.1
         - 5.1.2
-        verified: 5.1.2
+        - 5.1.3
+        - 5.1.4
+        verified: 5.1.4
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0
@@ -583,6 +605,146 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
+    - packageId: com.unity.cinemachine@2.6.3
+      testable: 0
+      isDirectDependency: 1
+      version: 2.6.3
+      source: 1
+      resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
+        Practice 2D\\Library\\PackageCache\\com.unity.cinemachine@2.6.3"
+      assetPath: Packages/com.unity.cinemachine
+      name: com.unity.cinemachine
+      displayName: Cinemachine
+      author:
+        name: 
+        email: 
+        url: 
+      category: cinematography
+      type: 
+      description: "Smart camera tools for passionate creators. \n\nIMPORTANT NOTE:
+        If you are upgrading from the Asset Store version of Cinemachine, delete
+        the Cinemachine asset from your project BEFORE installing this version from
+        the Package Manager."
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 2.1.11-beta.1
+        - 2.1.12
+        - 2.1.13
+        - 2.2.0
+        - 2.2.7
+        - 2.2.8
+        - 2.2.9
+        - 2.2.10-preview.3
+        - 2.2.10-preview.4
+        - 2.3.1
+        - 2.3.3
+        - 2.3.4
+        - 2.3.5-preview.3
+        - 2.4.0-preview.3
+        - 2.4.0-preview.4
+        - 2.4.0-preview.6
+        - 2.4.0-preview.7
+        - 2.4.0-preview.8
+        - 2.4.0-preview.9
+        - 2.4.0-preview.10
+        - 2.4.0
+        - 2.5.0
+        - 2.6.0-preview.2
+        - 2.6.0-preview.3
+        - 2.6.0-preview.5
+        - 2.6.0-preview.8
+        - 2.6.0
+        - 2.6.1-preview.6
+        - 2.6.1
+        - 2.6.2-preview.1
+        - 2.6.2
+        - 2.6.3-preview.2
+        - 2.6.3
+        - 2.6.4
+        - 2.6.5
+        - 2.6.9
+        - 2.7.1
+        - 2.7.2
+        - 2.7.3
+        - 2.7.4
+        - 2.7.5
+        - 2.8.0-exp.1
+        - 2.8.0-exp.2
+        - 2.8.0-pre.1
+        - 2.8.0
+        compatible:
+        - 2.5.0
+        - 2.6.0-preview.2
+        - 2.6.0-preview.3
+        - 2.6.0-preview.5
+        - 2.6.0-preview.8
+        - 2.6.0
+        - 2.6.1-preview.6
+        - 2.6.1
+        - 2.6.2-preview.1
+        - 2.6.2
+        - 2.6.3-preview.2
+        - 2.6.3
+        - 2.6.4
+        - 2.6.5
+        - 2.6.9
+        - 2.7.1
+        - 2.7.2
+        - 2.7.3
+        - 2.7.4
+        - 2.7.5
+        - 2.8.0-exp.1
+        - 2.8.0-exp.2
+        - 2.8.0-pre.1
+        - 2.8.0
+        verified: 2.6.9
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - camera
+      - follow
+      - rig
+      - fps
+      - cinematography
+      - aim
+      - orbit
+      - cutscene
+      - cinematic
+      - collision
+      - freelook
+      - cinemachine
+      - compose
+      - composition
+      - dolly
+      - track
+      - clearshot
+      - noise
+      - framing
+      - handheld
+      - lens
+      - impulse
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637364189870000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/upm-package-cinemachine.git
+        revision: bec7fa48fa2d6e9e46243f24d3b1d62918a6b377
+        path: 
     - packageId: com.unity.collab-proxy@1.3.9
       testable: 0
       isDirectDependency: 1
@@ -625,6 +787,10 @@ m_PackageAssets:
         - 1.3.9
         - 1.4.9
         - 1.5.7
+        - 1.6.0
+        - 1.7.1
+        - 1.8.0
+        - 1.9.0
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -639,6 +805,8 @@ m_PackageAssets:
         - 1.3.9
         - 1.4.9
         - 1.5.7
+        - 1.6.0
+        - 1.8.0
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -682,6 +850,68 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
         revision: fa825106f349f996acff22f718845eab46ca2d7c
+        path: 
+    - packageId: com.unity.ext.nunit@1.0.6
+      testable: 0
+      isDirectDependency: 1
+      version: 1.0.6
+      source: 1
+      resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
+        Practice 2D\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6"
+      assetPath: Packages/com.unity.ext.nunit
+      name: com.unity.ext.nunit
+      displayName: Custom NUnit
+      author:
+        name: 
+        email: 
+        url: 
+      category: Libraries
+      type: 
+      description: Custom version of the nunit package build to work with Unity.
+        Used by the Unity Test Framework.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
+        - 1.0.6
+        compatible:
+        - 0.1.5-preview
+        - 0.1.6-preview
+        - 0.1.9-preview
+        - 1.0.0
+        - 1.0.5
+        - 1.0.6
+        verified: 1.0.6
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - nunit
+      - unittest
+      - test
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637429759280000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
+        revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
         path: 
     - packageId: com.unity.ide.rider@2.0.7
       testable: 0
@@ -828,6 +1058,7 @@ m_PackageAssets:
         - 2.0.7
         - 2.0.8
         - 2.0.9
+        - 2.0.11
         compatible:
         - 1.0.2
         - 1.0.3
@@ -843,7 +1074,8 @@ m_PackageAssets:
         - 2.0.7
         - 2.0.8
         - 2.0.9
-        verified: 2.0.9
+        - 2.0.11
+        verified: 2.0.11
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
@@ -947,6 +1179,96 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
         revision: b5ec9b38109e52b1b26597d521e4df75e042ebb9
         path: 
+    - packageId: com.unity.postprocessing@3.0.3
+      testable: 0
+      isDirectDependency: 1
+      version: 3.0.3
+      source: 1
+      resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
+        Practice 2D\\Library\\PackageCache\\com.unity.postprocessing@3.0.3"
+      assetPath: Packages/com.unity.postprocessing
+      name: com.unity.postprocessing
+      displayName: Post Processing
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: The post-processing stack (v2) comes with a collection of effects
+        and image filters you can apply to your cameras to improve the visuals of
+        your games.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.7
+        - 0.1.8
+        - 2.0.0-beta
+        - 2.0.1-beta
+        - 2.0.2-preview
+        - 2.0.3-preview
+        - 2.0.5-preview
+        - 2.0.7-preview
+        - 2.0.8-preview
+        - 2.0.9-preview
+        - 2.0.10-preview
+        - 2.0.11-preview
+        - 2.0.12-preview
+        - 2.0.13-preview
+        - 2.0.14-preview
+        - 2.0.15-preview
+        - 2.0.16-preview
+        - 2.0.17-preview
+        - 2.1.0
+        - 2.1.1
+        - 2.1.2
+        - 2.1.3
+        - 2.1.4
+        - 2.1.5
+        - 2.1.6
+        - 2.1.7
+        - 2.2.1
+        - 2.2.2
+        - 2.3.0
+        - 3.0.1
+        - 3.0.3
+        - 3.1.0
+        - 3.1.1
+        compatible:
+        - 2.3.0
+        - 3.0.1
+        - 3.0.3
+        - 3.1.0
+        - 3.1.1
+        verified: 3.1.1
+      dependencies:
+      - name: com.unity.modules.physics
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.physics
+        version: 1.0.0
+      keywords: []
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637496860130000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
+        revision: 267c9ab2b6aae8e296d78e27ca27af29b3bc7606
+        path: 
     - packageId: com.unity.test-framework@1.1.24
       testable: 0
       isDirectDependency: 1
@@ -997,10 +1319,14 @@ m_PackageAssets:
         - 1.1.22
         - 1.1.24
         - 1.1.26
+        - 1.1.27
+        - 1.1.29
         compatible:
         - 1.1.24
         - 1.1.26
-        verified: 1.1.26
+        - 1.1.27
+        - 1.1.29
+        verified: 1.1.29
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6
@@ -1117,6 +1443,7 @@ m_PackageAssets:
         - 1.5.4
         - 1.5.5
         - 1.5.6
+        - 1.6.0-preview.1
         - 2.0.0
         - 2.0.1-preview.1
         - 2.0.1
@@ -1138,6 +1465,7 @@ m_PackageAssets:
         - 2.1.4
         - 2.1.5
         - 2.1.6
+        - 2.2.0-preview.1
         - 3.0.0-preview.1
         - 3.0.0-preview.3
         - 3.0.0-preview.4
@@ -1155,12 +1483,14 @@ m_PackageAssets:
         - 3.0.4
         - 3.0.5
         - 3.0.6
+        - 3.2.0-pre.1
         compatible:
         - 3.0.1
         - 3.0.3
         - 3.0.4
         - 3.0.5
         - 3.0.6
+        - 3.2.0-pre.1
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -1198,13 +1528,13 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.textmeshpro.git
         revision: e2f8dffb26de9a130d5b2140d83891d9a7825330
         path: 
-    - packageId: com.unity.timeline@1.4.6
+    - packageId: com.unity.timeline@1.4.7
       testable: 0
       isDirectDependency: 1
-      version: 1.4.6
+      version: 1.4.7
       source: 1
       resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
-        Practice 2D\\Library\\PackageCache\\com.unity.timeline@1.4.6"
+        Practice 2D\\Library\\PackageCache\\com.unity.timeline@1.4.7"
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -1278,10 +1608,13 @@ m_PackageAssets:
         - 1.5.2
         - 1.5.4
         - 1.5.5
+        - 1.5.6
         - 1.6.0-pre.1
         - 1.6.0-pre.3
         - 1.6.0-pre.4
         - 1.6.0-pre.5
+        - 1.6.1
+        - 1.6.2
         compatible:
         - 1.4.6
         - 1.4.7
@@ -1298,10 +1631,13 @@ m_PackageAssets:
         - 1.5.2
         - 1.5.4
         - 1.5.5
+        - 1.5.6
         - 1.6.0-pre.1
         - 1.6.0-pre.3
         - 1.6.0-pre.4
         - 1.6.0-pre.5
+        - 1.6.1
+        - 1.6.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -1339,13 +1675,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637463150940000000
+      datePublishedTicks: 637516874380000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-        revision: 2fe55e5d14362cc4fdcc886f56dbfe518298e4a5
+        revision: 66f96ddbbc76f565093e1e5e5d3d322d28acc7d7
         path: 
     - packageId: com.unity.ugui@1.0.0
       testable: 0
@@ -1409,6 +1745,78 @@ m_PackageAssets:
         type: 
         url: 
         revision: 
+        path: 
+    - packageId: com.unity.xr.legacyinputhelpers@2.1.7
+      testable: 0
+      isDirectDependency: 1
+      version: 2.1.7
+      source: 1
+      resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
+        Practice 2D\\Library\\PackageCache\\com.unity.xr.legacyinputhelpers@2.1.7"
+      assetPath: Packages/com.unity.xr.legacyinputhelpers
+      name: com.unity.xr.legacyinputhelpers
+      displayName: XR Legacy Input Helpers
+      author:
+        name: 
+        email: 
+        url: 
+      category: XR
+      type: 
+      description: This package includes the tracked pose driver for the legacy input
+        system, the XR Bindings Seeding Tool and 3Dof Arm Model support for the Tracked
+        Pose Driver. The Tracked Pose Driver is a behavior that enables GameObjects
+        to track input devices, the XR Bindings Seeding Tool adds a menu item under
+        the 'Assets' menu which populates the Input Asset with Unity's crossplatform
+        Input Bindings
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 2.1.7
+        compatible:
+        - 2.1.7
+        verified: 2.1.7
+      dependencies:
+      - name: com.unity.modules.vr
+        version: 1.0.0
+      - name: com.unity.modules.xr
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.vr
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      - name: com.unity.modules.physics
+        version: 1.0.0
+      - name: com.unity.modules.xr
+        version: 1.0.0
+      - name: com.unity.modules.subsystems
+        version: 1.0.0
+      keywords:
+      - TPD
+      - Tracked Pose Driver
+      - XR
+      - Input
+      - Helpers
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.xr.legacyinputhelpers.git
+        revision: b2024928b8140a10ad43aeb5824d2f08bb8796bc
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -3152,68 +3560,6 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.ext.nunit@1.0.6
-      testable: 0
-      isDirectDependency: 0
-      version: 1.0.6
-      source: 1
-      resolvedPath: "C:\\Users\\natiz\\OneDrive\\\uBB38\uC11C\\GitHub\\CodePractice\\Code
-        Practice 2D\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6"
-      assetPath: Packages/com.unity.ext.nunit
-      name: com.unity.ext.nunit
-      displayName: Custom NUnit
-      author:
-        name: 
-        email: 
-        url: 
-      category: Libraries
-      type: 
-      description: Custom version of the nunit package build to work with Unity.
-        Used by the Unity Test Framework.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.5-preview
-        - 0.1.6-preview
-        - 0.1.9-preview
-        - 1.0.0
-        - 1.0.5
-        - 1.0.6
-        compatible:
-        - 0.1.5-preview
-        - 0.1.6-preview
-        - 0.1.9-preview
-        - 1.0.0
-        - 1.0.5
-        - 1.0.6
-        verified: 1.0.6
-      dependencies: []
-      resolvedDependencies: []
-      keywords:
-      - nunit
-      - unittest
-      - test
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637429759280000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
-        revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
-        path: 
     - packageId: com.unity.mathematics@1.1.0
       testable: 0
       isDirectDependency: 0
@@ -3331,6 +3677,9 @@ m_PackageAssets:
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.0
+        - 6.0.0-pre.2
+        - 6.0.0-pre.3
+        - 6.0.0-pre.4
         compatible:
         - 4.0.2
         - 4.0.3
@@ -3406,17 +3755,20 @@ m_PackageAssets:
         - 2.0.5
         - 2.0.6
         - 2.1.0
+        - 2.1.1
         - 3.0.0
         - 3.0.1
         - 3.0.2
         - 4.0.0
         - 4.0.1
+        - 4.0.2
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.0
         compatible:
         - 4.0.1
-        verified: 4.0.1
+        - 4.0.2
+        verified: 4.0.2
       dependencies: []
       resolvedDependencies: []
       keywords:
