@@ -5,10 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Monster
-  - PlayerAttRange
-  - SkyBlock
-  - Floor
   layers:
   - Default
   - TransparentFX
@@ -16,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Monster
+  - 
   - 
   - Level
   - Enemy
@@ -40,7 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PlayerDrop
   - Platform
   m_SortingLayers:
   - name: Default
